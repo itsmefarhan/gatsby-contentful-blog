@@ -1,14 +1,23 @@
-import React, { Fragment, ReactNode } from "react"
+import React, { Fragment, ReactNode, useEffect, useState } from "react"
 import { Grid } from "@material-ui/core"
 import Header from "./header"
 import Footer from "./footer"
+import Loader from "../components/loader"
 
 interface Props {
   children: ReactNode
 }
 
 const Layout = ({ children }: Props) => {
-  return (
+  const [render, setRender] = useState(false)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setRender(true)
+    }, 1000)
+  }, [])
+
+  return render ? (
     <Fragment>
       <Header />
       <Grid container style={{ marginTop: "100px" }}>
@@ -20,6 +29,8 @@ const Layout = ({ children }: Props) => {
       </Grid>
       <Footer />
     </Fragment>
+  ) : (
+    <Loader />
   )
 }
 

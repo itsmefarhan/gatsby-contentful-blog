@@ -1,7 +1,7 @@
 import React from "react"
-import Layout from "../components/layout"
-import Helmet from "../components/head"
 import { Typography } from "@material-ui/core"
+import Helmet from "../components/head"
+import Layout from "../components/layout"
 
 const ContactPage = () => {
   return (

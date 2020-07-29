@@ -1,9 +1,9 @@
 import React from "react"
-import Layout from "../components/layout"
 import { graphql, useStaticQuery, Link } from "gatsby"
-import Helmet from "../components/head"
 import { Paper, Typography, Button } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
+import Helmet from "../components/head"
+import Layout from "../components/layout"
 
 const useStyles = makeStyles(() => ({
   paper: {
