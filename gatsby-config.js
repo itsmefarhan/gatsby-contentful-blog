@@ -22,7 +22,7 @@ module.exports = {
       },
     },
     "gatsby-plugin-sharp",
-    "gatsby-transformer-remark",    
     "gatsby-plugin-typescript",
+    "gatsby-transformer-remark",
   ],
 }

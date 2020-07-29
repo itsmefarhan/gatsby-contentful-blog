@@ -21,11 +21,11 @@ const Layout = ({ children }: Props) => {
     <Fragment>
       <Header />
       <Grid container style={{ marginTop: "100px" }}>
-        <Grid item xs={12} sm={3} />
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={2} sm={3} />
+        <Grid item xs={8} sm={6}>
           {children}
         </Grid>
-        <Grid item xs={12} sm={3} />
+        <Grid item xs={2} sm={3} />
       </Grid>
       <Footer />
     </Fragment>
