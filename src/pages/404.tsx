@@ -1,14 +1,17 @@
-import React from "react"
+import React, { Fragment } from "react"
 import { Link } from "gatsby"
+import { Typography } from "@material-ui/core"
 
 const NotFound = () => {
   return (
-    <>
-      <h1>Page Not Found</h1>
-      <p>
+    <Fragment>
+      <Typography variant="h3" align="center">
+        Page Not Found
+      </Typography>
+      <Typography variant="body1" align="center">
         <Link to="/">Back to Home</Link>
-      </p>
-    </>
+      </Typography>
+    </Fragment>
   )
 }
 
