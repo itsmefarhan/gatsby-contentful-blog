@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql, useStaticQuery, Link } from "gatsby"
-import { Paper, Typography, Button } from "@material-ui/core"
+import { Paper, Typography, Button, Divider } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import Helmet from "../components/head"
 import Layout from "../components/layout"
@@ -51,6 +51,7 @@ const BlogPage = () => {
           <Paper key={i} elevation={5} className={classes.paper}>
             <Typography variant="h5">{title}</Typography>
             <Typography variant="caption">{publishedDate}</Typography>
+            <Divider/>
             <Typography variant="body1" className={classes.excerpt}>
               {edge.node.excerpt.childMarkdownRemark.excerpt}
             </Typography>

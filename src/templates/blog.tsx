@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import { Typography } from "@material-ui/core"
+import { Typography, Divider } from "@material-ui/core"
 import Helmet from "../components/head"
 import Layout from "../components/layout"
 
@@ -26,7 +26,13 @@ const Blog = (props: any) => {
         if (node.data.target.fields) {
           const alt = node.data.target.fields.title["en-US"]
           const url = node.data.target.fields.file["en-US"].url
-          return <img alt={alt} src={url} className="img-fluid" />
+          return (
+            <img
+              alt={alt}
+              src={url}
+              style={{ maxWidth: "100%", display: "block" }}
+            />
+          )
         }
       },
     },
@@ -37,14 +43,10 @@ const Blog = (props: any) => {
       <Typography variant="h5">
         {props.data.contentfulBlogPost.title}
       </Typography>
-      <Typography
-        variant="caption"
-        style={{ marginBottom: "40px" }}
-        display="block"
-      >
+      <Typography variant="caption" display="block">
         {props.data.contentfulBlogPost.publishedDate}
       </Typography>
-
+      <Divider style={{ marginBottom: "40px" }} />
       {options &&
         documentToReactComponents(
           props.data.contentfulBlogPost.body.json,
