@@ -1,6 +1,7 @@
 import React from "react"
 import { Typography, Divider } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
+import { Fade } from "react-awesome-reveal"
 import Helmet from "../components/head"
 import Layout from "../components/layout"
 
@@ -15,13 +16,15 @@ const AboutPage = () => {
   return (
     <Layout>
       <Helmet title="About" />
-      <Typography variant="h3" className={classes.typo}>
-        About Author
-      </Typography>
-      <Divider />
-      <Typography variant="body1" className={classes.typo}>
-        I am Farhan Farooq. I built this blog as part of bootcamp project.
-      </Typography>
+      <Fade cascade={true} direction='top'>
+        <Typography variant="h3" className={classes.typo}>
+          About Author
+        </Typography>
+        <Divider />
+        <Typography variant="body1" className={classes.typo}>
+          I am Farhan Farooq. I built this blog as part of bootcamp project.
+        </Typography>
+      </Fade>
     </Layout>
   )
 }

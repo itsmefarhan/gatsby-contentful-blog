@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { Typography, Divider } from "@material-ui/core"
+import { Fade } from "react-awesome-reveal"
 import Helmet from "../components/head"
 import Layout from "../components/layout"
 
@@ -18,7 +19,7 @@ export const query = graphql`
 `
 
 const Blog = (props: any) => {
-  console.log(props)
+  // console.log(props)
   const options = {
     renderNode: {
       "embedded-asset-block": (node: any) => {
@@ -40,18 +41,22 @@ const Blog = (props: any) => {
   return (
     <Layout>
       <Helmet title={props.data.contentfulBlogPost.title} />
-      <Typography variant="h5">
-        {props.data.contentfulBlogPost.title}
-      </Typography>
-      <Typography variant="caption" display="block">
-        {props.data.contentfulBlogPost.publishedDate}
-      </Typography>
-      <Divider style={{ marginBottom: "40px" }} />
-      {options &&
-        documentToReactComponents(
-          props.data.contentfulBlogPost.body.json,
-          options
-        )}
+      <Fade direction="bottom">
+        <Typography variant="h5">
+          {props.data.contentfulBlogPost.title}
+        </Typography>
+        <Typography variant="caption" display="block">
+          {props.data.contentfulBlogPost.publishedDate}
+        </Typography>
+        <Divider style={{ marginBottom: "40px" }} />
+      </Fade>
+      <Fade cascade direction="top">
+        {options &&
+          documentToReactComponents(
+            props.data.contentfulBlogPost.body.json,
+            options
+          )}
+      </Fade>
     </Layout>
   )
 }
