@@ -47,7 +47,7 @@ module.exports = {
           },
         ],
         icon_options: {
-          purpose: "maskable",
+          purpose: "maskable any",
         },
       },
     },
