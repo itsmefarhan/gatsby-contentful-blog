@@ -7,7 +7,6 @@ import PermContactCalendarIcon from "@material-ui/icons/PermContactCalendar"
 import InfoIcon from "@material-ui/icons/Info"
 import AppsIcon from "@material-ui/icons/Apps"
 import { makeStyles } from "@material-ui/core/styles"
-import { OverridableComponent } from "@material-ui/core/OverridableComponent"
 
 const useStyles = makeStyles(() => ({
   homeIcon: {
@@ -54,17 +53,17 @@ const Header = () => {
   interface Props {
     title: string
     url: string
-    icon: OverridableComponent
+    icon: JSX.Element
   }
 
   return (
-    <nav className="navbar navbar-expand-md navbar-dark bg-info fixed-top">
+    <nav className="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
       <div className="container">
         <Hidden smDown>
           <AppsIcon className={classes.homeIcon} />
         </Hidden>
         <Typist cursor={{ show: false }}>
-          <Link className="navbar-brand" to="/">
+          <Link className="navbar-brand text-white" to="/">
             {data.site.siteMetadata.title}
           </Link>
         </Typist>
@@ -94,7 +93,7 @@ const Header = () => {
                   <Hidden smDown>
                     <div>{item.icon}</div>
                   </Hidden>
-                  <a className="nav-link" href={item.url}>
+                  <a className="nav-link text-white" href={item.url}>
                     {item.title}
                   </a>
                 </div>

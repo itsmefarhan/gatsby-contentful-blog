@@ -41,15 +41,28 @@ const BlogPage = () => {
 
   const { edges } = data.allContentfulBlogPost
 
+  interface Props {
+    node: {
+      slug: string
+      title: string
+      publishedDate: string
+      excerpt: {
+        childMarkdownRemark: {
+          excerpt: string
+        }
+      }
+    }
+  }
+
   return (
     <Layout>
       <Helmet title="Blog" />
 
-      {edges.map((edge: any, i: number) => {
-        const { slug, title, publishedDate } = edge.node
+      {edges.map((edge: Props, i: number) => {
+        const { slug, title, publishedDate, excerpt } = edge.node
 
         return (
-          <Fade key={i} direction={`${i % 2 === 0 ? 'top': 'bottom'}`}>
+          <Fade key={i} direction={`${i % 2 === 0 ? "top" : "bottom"}`}>
             <Paper elevation={5} className={classes.paper}>
               <Typography variant="h5" style={{ color: "#4d4848" }}>
                 {title}
@@ -57,7 +70,7 @@ const BlogPage = () => {
               <Typography variant="caption">{publishedDate}</Typography>
               <Divider />
               <Typography variant="body1" className={classes.excerpt}>
-                {edge.node.excerpt.childMarkdownRemark.excerpt}
+                {excerpt.childMarkdownRemark.excerpt}
               </Typography>
               <div style={{ marginBottom: "30px", marginTop: "10px" }}>
                 <Link to={`/blog/${slug}`} style={{ textDecoration: "none" }}>

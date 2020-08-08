@@ -18,7 +18,7 @@ const ContactPage = () => {
   return (
     <Layout>
       <Helmet title="Contact" />
-      <Fade cascade={true} direction='top'>
+      <Fade cascade={true} direction="top">
         <Typography variant="h3" className={classes.typo}>
           Contact
         </Typography>

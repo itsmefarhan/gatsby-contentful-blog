@@ -4,6 +4,8 @@ module.exports = {
   siteMetadata: {
     title: "Gatsby Blog",
     author: "Farhan Farooq",
+    description:
+      "Gatsby Blog - A blog built with Gatsby, TypeScript and Contentful",
   },
   plugins: [
     "gatsby-plugin-react-helmet",

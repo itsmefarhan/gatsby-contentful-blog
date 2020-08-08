@@ -17,13 +17,21 @@ export const query = graphql`
     }
   }
 `
+interface Props {
+  data: {
+    contentfulBlogPost: {
+      title: string
+      publishedDate: string
+      body: any
+    }
+  }
+}
 
-const Blog = (props: any) => {
-  // console.log(props)
+const Blog = (props: Props) => {
+  const { title, publishedDate, body } = props.data.contentfulBlogPost
   const options = {
     renderNode: {
       "embedded-asset-block": (node: any) => {
-        // console.log(node.data.target)
         if (node.data.target.fields) {
           const alt = node.data.target.fields.title["en-US"]
           const url = node.data.target.fields.file["en-US"].url
@@ -40,22 +48,16 @@ const Blog = (props: any) => {
   }
   return (
     <Layout>
-      <Helmet title={props.data.contentfulBlogPost.title} />
+      <Helmet title={title} />
       <Fade direction="bottom">
-        <Typography variant="h5">
-          {props.data.contentfulBlogPost.title}
-        </Typography>
+        <Typography variant="h5">{title}</Typography>
         <Typography variant="caption" display="block">
-          {props.data.contentfulBlogPost.publishedDate}
+          {publishedDate}
         </Typography>
         <Divider style={{ marginBottom: "40px" }} />
       </Fade>
       <Fade cascade direction="top">
-        {options &&
-          documentToReactComponents(
-            props.data.contentfulBlogPost.body.json,
-            options
-          )}
+        {options && documentToReactComponents(body.json, options)}
       </Fade>
     </Layout>
   )

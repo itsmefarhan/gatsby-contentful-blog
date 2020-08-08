@@ -4,8 +4,7 @@ import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(() => ({
   myloader: {
-    background: "black",
-    // background: "#5bc0de",
+    background: "#292826",
     height: "100vh",
     display: "flex",
     justifyContent: "center",
@@ -18,7 +17,7 @@ const Loader = () => {
 
   return (
     <div className={classes.myloader}>
-      <ReactLoading type="spinningBubbles" width="100px" color="orange" />
+      <ReactLoading type="spinningBubbles" width="100px" color="#f9d342" />
     </div>
   )
 }

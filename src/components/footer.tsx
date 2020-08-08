@@ -20,7 +20,7 @@ const Footer = () => {
         height: "50px",
         color: "white",
       }}
-      className="bg-info"
+      className="bg-dark"
     >
       <Typography variant="body1">
         Powered By Farhan Farooq, &copy; 2020

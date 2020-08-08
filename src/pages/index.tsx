@@ -9,6 +9,11 @@ const useStyles = makeStyles(() => ({
   typo: {
     marginTop: "20px",
   },
+  links: {
+    textDecoration: "none",
+    color: "black",
+    fontWeight: "bold",
+  },
 }))
 
 const Home = () => {
@@ -23,11 +28,21 @@ const Home = () => {
       <Zoom>
         <Typography variant="body1" className={classes.typo}>
           This blog is built with{" "}
-          <a href="https://www.gatsbyjs.org/" target="_blank">
+          <a
+            className={classes.links}
+            href="https://www.gatsbyjs.org/"
+            target="_blank"
+            rel="noreferrer"
+          >
             Gatsby
           </a>{" "}
           & TypeScript on frontend and{" "}
-          <a href="https://www.contentful.com/" target="_blank">
+          <a
+            className={classes.links}
+            href="https://www.contentful.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
             Contentful{" "}
           </a>
           as Backend.
@@ -35,13 +50,20 @@ const Home = () => {
 
         <Typography variant="body1" className={classes.typo}>
           <a
+            className={classes.links}
             href="https://www.contentful.com/developers/docs/concepts/webhooks/"
             target="_blank"
+            rel="noreferrer"
           >
             Contentful Webhooks
           </a>{" "}
           are used with{" "}
-          <a href="https://github.com/features/actions" target="_blank">
+          <a
+            className={classes.links}
+            href="https://github.com/features/actions"
+            target="_blank"
+            rel="noreferrer"
+          >
             Github Actions{" "}
           </a>{" "}
           so that if we change something in Contentful, the updated content will
@@ -49,7 +71,12 @@ const Home = () => {
         </Typography>
 
         <Typography variant="body1" className={classes.typo}>
-          <a href="https://material-ui.com/" target="_blank">
+          <a
+            className={classes.links}
+            href="https://material-ui.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
             Material-UI
           </a>{" "}
           is used for styling and responsive.
@@ -57,7 +84,12 @@ const Home = () => {
 
         <Typography variant="body1" className={classes.typo}>
           This is a fully functional{" "}
-          <a href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps">
+          <a
+            className={classes.links}
+            href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps"
+            target="_blank"
+            rel="noreferrer"
+          >
             Progressive Web App.
           </a>
         </Typography>
