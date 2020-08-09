@@ -28,7 +28,14 @@ module.exports = {
     "gatsby-plugin-typescript",
     "gatsby-transformer-remark",
     "gatsby-plugin-sitemap",
-    "gatsby-plugin-robots-txt",
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: "https://thegatsbyblog.surge.sh",
+        sitemap: "https://thegatsbyblog.surge.sh/sitemap.xml",
+        policy: [{ userAgent: "*", allow: "/" }],
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
