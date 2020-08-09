@@ -6,6 +6,7 @@ module.exports = {
     author: "Farhan Farooq",
     description:
       "Gatsby Blog - A blog built with Gatsby, TypeScript and Contentful",
+    siteUrl: "https://thegatsbyblog.surge.sh",
   },
   plugins: [
     "gatsby-plugin-react-helmet",
@@ -26,6 +27,8 @@ module.exports = {
     "gatsby-plugin-sharp",
     "gatsby-plugin-typescript",
     "gatsby-transformer-remark",
+    "gatsby-plugin-sitemap",
+    "gatsby-plugin-robots-txt",
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
