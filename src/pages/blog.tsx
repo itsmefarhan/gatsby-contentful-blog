@@ -1,10 +1,11 @@
-import React from "react"
+import React, { useContext } from "react"
 import { graphql, useStaticQuery, Link } from "gatsby"
 import { Paper, Typography, Button, Divider } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import { Fade } from "react-awesome-reveal"
 import Helmet from "../components/head"
 import Layout from "../components/layout"
+import { AuthContext } from "../context/AuthContext"
 
 const useStyles = makeStyles(() => ({
   paper: {
@@ -20,72 +21,74 @@ const useStyles = makeStyles(() => ({
 const BlogPage = () => {
   const classes = useStyles()
 
+  const { user } = useContext(AuthContext)
+
   const data = useStaticQuery(graphql`
     query {
-      allContentfulBlogPost(sort: { fields: publishedDate, order: DESC }) {
-        edges {
-          node {
-            title
-            slug
-            publishedDate(formatString: "MMMM Do, YYYY")
-            excerpt {
-              childMarkdownRemark {
-                excerpt(pruneLength: 100)
-              }
-            }
-          }
+      allContentfulBlog {
+        nodes {
+          title
+          slug
+          publishedAt(fromNow: true)
+          excerpt
         }
       }
     }
   `)
 
-  const { edges } = data.allContentfulBlogPost
+  const { nodes } = data.allContentfulBlog
 
   interface Props {
-    node: {
-      slug: string
-      title: string
-      publishedDate: string
-      excerpt: {
-        childMarkdownRemark: {
-          excerpt: string
-        }
-      }
-    }
+    slug: string
+    title: string
+    publishedAt: string
+    excerpt: string
   }
+
+  const renderData = (data: Props) => (
+    <Paper elevation={5} className={classes.paper}>
+      <Typography variant="h5" style={{ color: "#4d4848" }}>
+        {data.title}
+      </Typography>
+      <Typography variant="caption">{data.publishedAt}</Typography>
+      <Divider />
+      <Typography variant="body1" className={classes.excerpt}>
+        {data.excerpt}
+      </Typography>
+      <div style={{ marginBottom: "30px", marginTop: "10px" }}>
+        <Link to={`/blog/${data.slug}`} style={{ textDecoration: "none" }}>
+          <Button
+            variant="contained"
+            style={{ background: "#5bc0de", color: "white" }}
+          >
+            Read More
+          </Button>
+        </Link>
+      </div>
+    </Paper>
+  )
 
   return (
     <Layout>
       <Helmet title="Blog" />
 
-      {edges.map((edge: Props, i: number) => {
-        const { slug, title, publishedDate, excerpt } = edge.node
+      {!user &&
+        nodes.slice(0, 3).map((node: Props, i: number) => {
+          return (
+            <Fade key={i} direction={`${i % 2 === 0 ? "top" : "bottom"}`}>
+              {renderData(node)}
+            </Fade>
+          )
+        })}
 
-        return (
-          <Fade key={i} direction={`${i % 2 === 0 ? "top" : "bottom"}`}>
-            <Paper elevation={5} className={classes.paper}>
-              <Typography variant="h5" style={{ color: "#4d4848" }}>
-                {title}
-              </Typography>
-              <Typography variant="caption">{publishedDate}</Typography>
-              <Divider />
-              <Typography variant="body1" className={classes.excerpt}>
-                {excerpt.childMarkdownRemark.excerpt}
-              </Typography>
-              <div style={{ marginBottom: "30px", marginTop: "10px" }}>
-                <Link to={`/blog/${slug}`} style={{ textDecoration: "none" }}>
-                  <Button
-                    variant="contained"
-                    style={{ background: "#5bc0de", color: "white" }}
-                  >
-                    Read More
-                  </Button>
-                </Link>
-              </div>
-            </Paper>
-          </Fade>
-        )
-      })}
+      {user &&
+        nodes.map((node: Props, i: number) => {
+          return (
+            <Fade key={i} direction={`${i % 2 === 0 ? "top" : "bottom"}`}>
+              {renderData(node)}
+            </Fade>
+          )
+        })}
     </Layout>
   )
 }

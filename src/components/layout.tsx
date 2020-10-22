@@ -18,9 +18,9 @@ const Layout = ({ children }: Props) => {
   }, [])
 
   return render ? (
-    <Fragment>
+    <div style={{ position: "relative", minHeight: "100vh" }}>
       <Header />
-      <Grid container style={{ marginTop: "100px" }}>
+      <Grid container style={{ paddingBottom:'50px' }}>
         <Grid item xs={1} sm={3} />
         <Grid item xs={10} sm={6}>
           {children}
@@ -28,7 +28,7 @@ const Layout = ({ children }: Props) => {
         <Grid item xs={1} sm={3} />
       </Grid>
       <Footer />
-    </Fragment>
+    </div>
   ) : (
     <Loader />
   )

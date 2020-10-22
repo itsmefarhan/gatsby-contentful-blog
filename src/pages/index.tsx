@@ -79,7 +79,7 @@ const Home = () => {
           >
             Material-UI
           </a>{" "}
-          is used for styling and responsive.
+          is used for styling and responsiveness.
         </Typography>
 
         <Typography variant="body1" className={classes.typo}>

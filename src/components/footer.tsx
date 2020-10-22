@@ -1,21 +1,14 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import { Typography } from "@material-ui/core"
 
 const Footer = () => {
-  const [pos, setPos] = useState<boolean>(false)
-
-  useEffect(() => {
-    setPos(window.innerHeight > window.document.body.clientHeight)
-  }, [pos])
-
   return (
     <footer
       style={{
-        position: pos ? "absolute" : "relative",
+        position: "absolute",
         bottom: "0",
         width: "100%",
         textAlign: "center",
-        marginTop: "20px",
         paddingTop: "15px",
         height: "50px",
         color: "white",
@@ -23,7 +16,7 @@ const Footer = () => {
       className="bg-dark"
     >
       <Typography variant="body1">
-        Powered By Farhan Farooq, &copy; 2020
+        Powered By Farhan Farooq, &copy; {new Date().getFullYear()}
       </Typography>
     </footer>
   )
