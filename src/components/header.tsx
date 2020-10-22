@@ -33,7 +33,6 @@ const Header = () => {
   const classes = useStyles()
 
   const { user } = useContext(AuthContext)
-  console.log(user)
 
   const data = useStaticQuery(graphql`
     query {

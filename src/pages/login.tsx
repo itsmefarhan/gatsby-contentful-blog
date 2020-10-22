@@ -39,7 +39,7 @@ const Login = () => {
   const classes = useStyles()
 
   const authContext = useContext(AuthContext)
-  console.log(authContext)
+
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -59,7 +59,6 @@ const Login = () => {
       .signInWithEmailAndPassword(values.email, values.password)
       .then(res => {
         authContext.setUser(res)
-        console.log(res, "res")
         navigate("/")
       })
       .catch(error => {
