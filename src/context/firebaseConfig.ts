@@ -2,13 +2,13 @@ import firebase from "firebase/app"
 import "firebase/auth"
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB3H4WaWmkmJe8Q9WedyMfC1j-rsSm3qlw",
-  authDomain: "project-cfdbb.firebaseapp.com",
-  databaseURL: "https://project-cfdbb.firebaseio.com",
-  projectId: "project-cfdbb",
-  storageBucket: "project-cfdbb.appspot.com",
-  messagingSenderId: "262296927726",
-  appId: "1:262296927726:web:52d6177f311dfcda",
+  apiKey: "AIzaSyAXkHV0ewnzuQeFVi4tiwqtbqG5N0oRzj4",
+  authDomain: "reactnativefirebase-79776.firebaseapp.com",
+  databaseURL: "https://reactnativefirebase-79776.firebaseio.com",
+  projectId: "reactnativefirebase-79776",
+  storageBucket: "reactnativefirebase-79776.appspot.com",
+  messagingSenderId: "328515719263",
+  appId: "1:328515719263:web:cdf3ab865fb8b449270bea"
 }
 
 firebase.initializeApp(firebaseConfig)
